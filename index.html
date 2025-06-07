@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYU-TAU Workshop on AI and the Future of Collaborative Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #d1c4e9 0%, #b39ddb 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #b19cd9 0%, #8e6ba8 50%, #6b4d87 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.06)"/><circle cx="90" cy="90" r="1.2" fill="rgba(255,255,255,0.07)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .small-title {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ffffff, #e6ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .detail-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .detail-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #e6ccff;
+        }
+        
+        main {
+            padding: 4rem 2rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #330662;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #8900e1, #330662);
+            border-radius: 2px;
+        }
+        
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .speaker-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .speaker-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem auto;
+            display: block;
+            border: 3px solid #d1c4e9;
+        }
+        
+        .speaker-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #8900e1, #330662);
+        }
+        
+        .speaker-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .speaker-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #330662;
+        }
+        
+        .speaker-affiliation {
+            color: #8900e1;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .speaker-bio {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .organizers {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e6ccff 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .organizers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .organizer-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .organizer-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem auto;
+            display: block;
+            border: 4px solid #d1c4e9;
+        }
+        
+        .sponsors {
+            background: linear-gradient(135deg, #330662 0%, #57068c 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .sponsors h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .sponsors h2::after {
+            background: linear-gradient(45deg, #ffffff, #e6ccff);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .sponsors-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .sponsor-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+        }
+        
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sponsor-card h4 {
+            color: #e6ccff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .sponsor-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .sponsor-card a:hover {
+            color: #e6ccff;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #d1c4e9 0%, #b39ddb 50%, #9575cd 100%);
+            color: #2c1810;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .cta-section h2 {
+            color: #2c1810;
+        }
+        
+        .cta-section h2::after {
+            background: linear-gradient(45deg, #6b4d87, #8e6ba8);
+        }
+        
+        .cta-button, .program-button {
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #4a0c7a;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+        }
+        
+        .program-button {
+            display: inline-block;
+            background: rgba(74, 12, 122, 0.1);
+            color: #4a0c7a;
+            border: 2px solid #4a0c7a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .cta-button:hover, .program-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .program-button {
+            background: rgba(74, 12, 122, 0.1);
+            color: #4a0c7a;
+            border: 2px solid #4a0c7a;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .topics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .topic-item {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #8900e1;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background: #330662;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                margin: 1rem;
+                border-radius: 15px;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+            
+            header {
+                padding: 3rem 1rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .sponsors-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <p class="small-title">The First NYU-TAU Workshop On</p>
+                <h1>AI and the Future of Collaborative Innovation</h1>
+                
+                <div class="event-details">
+                    <div class="detail-card">
+                        <h3>📅 When</h3>
+                        <p>September 12th, 2025</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>🍷 Reception</h3>
+                        <p>September 11th Evening</p>
+                    </div>
+                    <div class="detail-card">
+                        <h3>📍 Where</h3>
+                        <p>NYU Stern School of Business<br>
+                        <small>Washington Square Campus, NYC</small></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="cta-section">
+                <h2>Call for Participation</h2>
+                <p>Submit your work on AI and collaborative innovation. We welcome both completed research and work in progress from scholars across information systems, marketing, strategy, and related disciplines.</p>
+                <p><strong>Submission Deadline:</strong> June 30th, 2025</p>
+                
+                <div class="action-buttons">
+                    <a href="https://forms.gle/hgj2pKRBcr2XV2VR7" class="cta-button" target="_blank">Submit Your Work</a>
+                    <a href="#" class="program-button">Program (Coming Soon)</a>
+                    <a href="#" class="program-button">Registration (Coming Soon)</a>
+                </div>
+            </div>
+
+            <section id="about">
+                <h2>About the Workshop</h2>
+                <p>This inaugural workshop brings together scholars from information systems, marketing, strategy and other disciplines to examine how artificial intelligence is transforming collaborative innovation across industries and institutions. Our focus encompasses the evolving landscape where AI technologies intersect with human collaboration, organizational innovation processes, and the broader ecosystem of knowledge creation and sharing.</p>
+            </section>
+
+            <section id="speakers">
+                <h2>Plenary Speakers</h2>
+                <div class="speakers-grid">
+                    <div class="speaker-card">
+                        <img src="https://www.avigoldfarb.com/images/avi.jpg" alt="Avi Goldfarb" class="speaker-photo">
+                        <h3>Avi Goldfarb</h3>
+                        <p class="speaker-affiliation">University of Toronto, Rotman School</p>
+                        <p class="speaker-bio">Rotman Chair in Artificial Intelligence and Healthcare, Professor of Marketing. Co-author of "Prediction Machines" and "Power and Prediction." Leading expert on the economics of artificial intelligence and digital markets.</p>
+                    </div>
+                    
+                    <div class="speaker-card">
+                        <img src="https://via.placeholder.com/100x100/d1c4e9/6b4d87?text=SH" alt="Shawndra Hill" class="speaker-photo">
+                        <h3>Shawndra Hill</h3>
+                        <p class="speaker-affiliation">Meta (Facebook)</p>
+                        <p class="speaker-bio">Principal Scientist focused on AI applications in social platforms, collaborative technologies, and the intersection of artificial intelligence with human social behavior.</p>
+                    </div>
+                    
+                    <div class="speaker-card">
+                        <img src="https://via.placeholder.com/100x100/d1c4e9/6b4d87?text=JH" alt="John Horton" class="speaker-photo">
+                        <h3>John Horton</h3>
+                        <p class="speaker-affiliation">Massachusetts Institute of Technology</p>
+                        <p class="speaker-bio">Professor examining digital labor markets, online collaboration platforms, and the economic impacts of technological change on work and innovation.</p>
+                    </div>
+                    
+                    <div class="speaker-card">
+                        <img src="https://via.placeholder.com/100x100/d1c4e9/6b4d87?text=AS" alt="Arun Sundararajan" class="speaker-photo">
+                        <h3>Arun Sundararajan</h3>
+                        <p class="speaker-affiliation">New York University, Stern School</p>
+                        <p class="speaker-bio">Harold Price Professor of Entrepreneurship and Professor of Technology, Operations & Statistics. Leading researcher on the sharing economy, digital transformation, and the future of work in the digital age.</p>
+                    </div>
+                    
+                    <div class="speaker-card">
+                        <img src="https://via.placeholder.com/100x100/d1c4e9/6b4d87?text=TBC" alt="To be confirmed" class="speaker-photo">
+                        <h3>To be confirmed</h3>
+                        <p class="speaker-affiliation">TBC</p>
+                        <p class="speaker-bio">Additional distinguished speaker to be announced soon.</p>
+                    </div>
+                    
+                    <div class="speaker-card">
+                        <img src="https://via.placeholder.com/100x100/d1c4e9/6b4d87?text=TBC" alt="To be confirmed" class="speaker-photo">
+                        <h3>To be confirmed</h3>
+                        <p class="speaker-affiliation">TBC</p>
+                        <p class="speaker-bio">Additional distinguished speaker to be announced soon.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="topics">
+                <h2>Research Topics</h2>
+                <p>We invite submissions on topics related to how modern AI technologies are affecting collaboration and innovation, including but not limited to:</p>
+                
+                <div class="topics-list">
+                    <div class="topic-item">
+                        <strong>AI-Mediated Collaboration</strong><br>
+                        How AI tools reshape team dynamics and collaborative processes
+                    </div>
+                    <div class="topic-item">
+                        <strong>Innovation Ecosystems</strong><br>
+                        AI's impact on open innovation, knowledge networks, and R&D processes
+                    </div>
+                    <div class="topic-item">
+                        <strong>Platform Economics</strong><br>
+                        AI-powered platforms facilitating collaborative innovation
+                    </div>
+                    <div class="topic-item">
+                        <strong>Organizational Learning</strong><br>
+                        How AI transforms knowledge creation and sharing within organizations
+                    </div>
+                    <div class="topic-item">
+                        <strong>Digital Labor Markets</strong><br>
+                        AI's role in distributed and collaborative work arrangements
+                    </div>
+                    <div class="topic-item">
+                        <strong>Human-AI Collaboration</strong><br>
+                        Theoretical and empirical studies of human-AI team performance
+                    </div>
+                </div>
+            </section>
+
+            <div class="organizers">
+                <h2>Workshop Organizers</h2>
+                <div class="organizers-grid">
+                    <div class="organizer-card">
+                        <img src="https://en-coller.tau.ac.il/sites/coller-english.tau.ac.il/files/styles/research_teaser_image_180_x_180/public/gal_o_0.JPG" alt="Gal Oestreicher-Singer" class="organizer-photo">
+                        <h3>Gal Oestreicher-Singer</h3>
+                        <p><strong>Tel Aviv University</strong></p>
+                        <p>Associate Dean of Research, Coller School of Management</p>
+                    </div>
+                    <div class="organizer-card">
+                        <img src="https://www.stern.nyu.edu/faculty/static/photos/rmayya.png?v=20250606170836" alt="Raveesh Mayya" class="organizer-photo">
+                        <h3>Raveesh Mayya</h3>
+                        <p><strong>New York University</strong></p>
+                        <p>Assistant Professor of Technology, Stern School of Business</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="sponsors">
+            <h2>Sponsors & Partners</h2>
+            <div class="sponsors-container">
+                <div class="sponsor-card">
+                    <h3>Sponsor</h3>
+                    <h4>TAU-NYU Research Cooperation</h4>
+                    <p>Supporting collaborative research between Tel Aviv University and New York University</p>
+                    <a href="https://www.nyu.edu/faculty/faculty-in-the-global-network/scholarly-opportunities/TAU-NYU-Research-Cooperation.html" target="_blank">Learn More →</a>
+                </div>
+                <div class="sponsor-card">
+                    <h3>Partner</h3>
+                    <h4>Fubon Center</h4>
+                    <p>Center for Technology, Business and Innovation at NYU Stern</p>
+                    <a href="https://www.stern.nyu.edu/experience-stern/about/departments-centers-initiatives/centers-of-research/fubon-center-technology-business-and-innovation" target="_blank">Learn More →</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 NYU-TAU Workshop on AI and Collaborative Innovation</p>
+            <p>For inquiries, contact: <a href="mailto:raveesh@stern.nyu.edu" style="color: #e6ccff;">raveesh@stern.nyu.edu</a></p>
+        </footer>
+    </div>
+</body>
+</html>
