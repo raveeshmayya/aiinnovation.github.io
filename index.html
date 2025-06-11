@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,6 +231,60 @@
             border: 4px solid #d1c4e9;
         }
         
+        .registration {
+            background: linear-gradient(135deg, #fff8e1 0%, #e6ccff 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: #8900e1;
+        }
+        
+        .pricing-card h4 {
+            color: #330662;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #8900e1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-currency {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .pricing-description {
+            color: #666;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+        
         .sponsors {
             background: linear-gradient(135deg, #330662 0%, #57068c 100%);
             color: white;
@@ -412,6 +467,10 @@
             .sponsors-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -447,7 +506,7 @@
                 <div class="action-buttons">
                     <a href="https://forms.gle/ygEyBMDc1t8tr9B47" class="cta-button" target="_blank">Submit Your Work</a>
                     <a href="#" class="program-button">Program (Coming Soon)</a>
-                    <a href="#" class="program-button">Registration (Coming Soon)</a>
+                    <a href="#registration" class="cta-button">Registration</a>
                 </div>
             </div>
 
@@ -557,6 +616,35 @@
                     </div>
                 </div>
             </div>
+        <div class="registration" id="registration">
+                <h2>Registration</h2>
+                <p>Join us for this exciting workshop bringing together leading researchers and practitioners in AI and collaborative innovation. Registration includes access to all workshop sessions, networking reception, and workshop materials.</p>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h4>🎤 Speakers</h4>
+                        <div class="price">Waived</div>
+                        <div class="pricing-description">
+                            Special rate for invited speakers and panelists presenting at the workshop
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h4>🎓 Academics</h4>
+                        <div class="price">$150<span class="price-currency"> USD</span></div>
+                        <div class="pricing-description">
+                            Faculty, postdocs, and graduate students from academic institutions
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h4>🏢 Industry Partners</h4>
+                        <div class="price">$250<span class="price-currency"> USD</span></div>
+                        <div class="pricing-description">
+                            Professionals from industry, consulting, and private sector organizations
+                        </div>
+                    </div>
+                </div>
         </main>
 
         <div class="sponsors">
