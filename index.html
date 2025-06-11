@@ -285,6 +285,25 @@
             line-height: 1.5;
         }
         
+        .register-button {
+            display: inline-block;
+            background: #4a0c7a;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        
+        .register-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
         .sponsors {
             background: linear-gradient(135deg, #330662 0%, #57068c 100%);
             color: white;
@@ -623,9 +642,9 @@
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <h4>🎤 Speakers</h4>
-                        <div class="price">Waived</div>
+                        <div class="price">$100<span class="price-currency"> USD</span></div>
                         <div class="pricing-description">
-                            Special rate for invited speakers and panelists presenting at the workshop
+                            Special rate for speakers selected to present at the workshop
                         </div>
                     </div>
                     
@@ -643,6 +662,9 @@
                         <div class="pricing-description">
                             Professionals from industry, consulting, and private sector organizations
                         </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="#" class="register-button">Register Now (Coming Soon)</a>
                     </div>
                 </div>
         </main>
